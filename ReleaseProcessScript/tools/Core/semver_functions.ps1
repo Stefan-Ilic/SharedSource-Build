@@ -81,18 +81,21 @@ function Get-Possible-Next-Versions-Develop ($Version, $WithoutPrerelease)
   } 
 }
 
-function Get-Possible-Next-Versions-Support ($Version)
+function Get-Possible-Versions-Hotfix ($Version, $MeantForCurrentVersion = $false)
 {
   $Match = Parse-Semver $Version
 
   $Major = $Match.Groups["major"].ToString()
   $Minor = $Match.Groups["minor"].ToString()
-  $Patch = $Match.Groups["patch"].ToString()      
- 
-  $NextPatch = [string](1 + $Patch)
-  $NextPossiblePatch = "$($Major).$($Minor).$($NextPatch)"
+  $Patch = $Match.Groups["patch"].ToString()
 
-  #Compute 1.2.3-alpha.4 
+  if (-not $MeantForCurrentVersion)
+  {
+    $Patch = [string](1 + $Patch)
+  }
+  $NextPossiblePatch = "$($Major).$($Minor).$($Patch)"
+
+  #Compute 1.2.3-alpha.4
   if ($Match.Groups["pre"].Success)
   {
     $Pre = $Match.Groups["pre"].ToString()
