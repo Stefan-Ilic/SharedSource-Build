@@ -142,8 +142,7 @@
     <Error Text="The property 'DotNetFrameworkRuntimeImageName' is not set." Condition="'$(DotNetFrameworkRuntimeImageName)' == '' And '(_dockerDisabled)' == 'False'" />
 
     <PropertyGroup>
-      <_nunitRunnerFileName>nunit-console.exe</_nunitRunnerFileName>
-      <_nunitRunnerFileName Condition="$(_use32Bit) == 'True'">nunit-console-x86.exe</_nunitRunnerFileName>
+      <_nunitRunnerFileName>nunit3-console.exe</_nunitRunnerFileName>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -152,7 +151,8 @@
     </PropertyGroup>
 
     <PropertyGroup>
-      <_nunitCallArgumentString>/nologo /noshadow $(_testAssemblyFullPath) /exclude=$([MSBuild]::Escape('$(_testCategoriesToExclude)')) /framework=$(_executionRuntime) /xml=$(_testResultFile)</_nunitCallArgumentString>
+      <_use32BitArgument Condition="$(_use32Bit) == 'True'">--x86</_use32BitArgument>
+      <_nunitCallArgumentString>$(_use32BitArgument) $(_testAssemblyFullPath) --where "cat != $([MSBuild]::Escape('$(_testCategoriesToExclude)'))" --framework=$(_executionRuntime) --result=$(_testResultFile)</_nunitCallArgumentString>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -263,16 +263,6 @@ $(DotNetFrameworkRuntimeImageName) $(_nunitCallArgumentString)
     </ItemGroup>
 
     <Copy SourceFiles="@(_filesToBeCopied)" DestinationFolder="%(_nunitDestinationFolderPath.Identity)"></Copy>
-
-    <MSBuild.ExtensionPack.Xml.XmlFile TaskAction="UpdateElement"
-        File="%(_nunitDestinationFolderPath.Identity)nunit-console.exe.config"
-        XPath="configuration/startup"
-        InnerXml="$([MSBuild]::Unescape('%(_nunitDestinationFolderPath.SupportedRuntimeConfiguration)'))" />
-
-    <MSBuild.ExtensionPack.Xml.XmlFile TaskAction="UpdateElement"
-        File="%(_nunitDestinationFolderPath.Identity)nunit-console-x86.exe.config"
-        XPath="configuration/startup"
-        InnerXml="$([MSBuild]::Unescape('%(_nunitDestinationFolderPath.SupportedRuntimeConfiguration)'))" />
   </Target>
 
   <!--
