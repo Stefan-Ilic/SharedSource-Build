@@ -470,7 +470,6 @@ function Continue-Patch-Release ()
 
   Push-To-Repos $MergeTargetBranchName $TRUE
   Push-To-Repos "release/v$($CurrentVersion)"
-
 }
 
 function Continue-Master-Release ()

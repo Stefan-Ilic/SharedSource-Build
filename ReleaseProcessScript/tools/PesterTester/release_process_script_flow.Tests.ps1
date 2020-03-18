@@ -128,6 +128,7 @@ Context "Release-Version Functions called" {
       git checkout -b "develop" --quiet
       Test-Add-Commit
 
+
       git checkout -b "release/v1.0.0" --quiet
 
       { Release-Version }| Should Not Throw       
