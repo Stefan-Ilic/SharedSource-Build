@@ -26,8 +26,8 @@ Describe "git_base_functions" {
 
     Mock Get-Config-File { return $ConfigFile }
 
-    Test-Create-Repository "$($TestBaseDir)\\$($TestDirName)"
-    cd "$($TestBaseDir)\\$($TestDirName)"
+    Test-Create-Repository $TestBaseDir\\$TestDirName
+    cd $TestBaseDir\\$TestDirName)
 
     if(-not $?)
     {
