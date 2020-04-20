@@ -22,5 +22,8 @@ jobs:
     - name: Run a one-line script
       run: Install-Module -Name Pester -Force
 
+    - name: Checkout Test Directory
+      run: cd ReleaseProcessScript\tools\PesterTester
+      
     - name: Run ReleaseProcessScript Tests
       run: Invoke-Pester -EnableExit
