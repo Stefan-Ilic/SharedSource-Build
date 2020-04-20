@@ -11,8 +11,8 @@
 $ScriptRoot = $PSScriptRoot
 
 $TestBaseDir = (Get-Item -LiteralPath $env:TEMP).FullName
-$TestDir = "$($TestBaseDir)\ReleaseProcessScriptTestRepository"
-$ReferenceDir = "$($TestBaseDir)\ReleaseProcessScriptReferenceRepository"
+$TestDir = "$TestBaseDir\ReleaseProcessScriptTestRepository"
+$ReferenceDir = "$TestBaseDir\ReleaseProcessScriptReferenceRepository"
 
 #TODO: Add a MSBuild Step which commits something to test the correct git branching
 #TODO: Same with File ignore
