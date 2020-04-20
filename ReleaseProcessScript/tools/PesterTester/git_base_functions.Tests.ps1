@@ -37,13 +37,13 @@ Describe "git_base_functions" {
   }
 
   AfterEach {
+    cd $ScriptRoot
     if (Test-Path $TestBaseDir\$TestDirName) {
-      Remove-Item $TestBaseDir\$TestDirName -Recurse
+      Remove-Item $TestBaseDir\$TestDirName -Recurse -Force
     }
     if (Test-Path $TestBaseDir\$PseudoRemoteTestDir) {
-      Remove-Item $TestBaseDir\$PseudoRemoteTestDir -Recurse
+      Remove-Item $TestBaseDir\$PseudoRemoteTestDir -Recurse -Force
     }
-    cd $ScriptRoot
   }
 
   Context "Get-Branch-Exists" {
