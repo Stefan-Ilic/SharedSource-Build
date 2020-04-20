@@ -37,9 +37,12 @@ Describe "git_base_functions" {
   }
 
   AfterEach {
-    cd $TestBaseDir
-    Remove-Item -Recurse -Force $TestDirName 2>&1 | Out-Null
-    Remove-Item -Recurse -Force $PseudoRemoteTestDir 2>&1 | Out-Null
+    if (Test-Path $TestBaseDir\$TestDirName) {
+      Remove-Item $TestBaseDir\$TestDirName -Recurse
+    }
+    if (Test-Path $TestBaseDir\$PseudoRemoteTestDir) {
+      Remove-Item $TestBaseDir\$PseudoRemoteTestDir -Recurse
+    }
     cd $ScriptRoot
   }
 
