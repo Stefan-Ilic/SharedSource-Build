@@ -4,7 +4,7 @@ function Parse-Semver ($Semver)
      
   if(-not [regex]::IsMatch($Semver, $Regex, 'MultiLine'))
   {
-    throw "Your version '$($Semver)' does not have a valid format (e.g. 1.2.3-alpha.1)."
+    throw "Your version '$Semver' does not have a valid format (e.g. 1.2.3-alpha.1)."
   }
 
   return [regex]::Match($Semver, $Regex)
