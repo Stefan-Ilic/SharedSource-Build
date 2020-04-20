@@ -18,8 +18,8 @@ Describe "main_functions" {
     #Run once to save Config file in global Memory
     Load-Config-File
 
-    Test-Create-Repository "$($TestBaseDir)\\$($TestDirName)"
-    cd "$($TestBaseDir)\\$($TestDirName)"
+    Test-Create-Repository "$TestBaseDir\\$TestDirName"
+    cd "$TestBaseDir\\$TestDirName"
     Test-Mock-All-Jira-Functions
   }
 
