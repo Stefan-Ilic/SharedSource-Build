@@ -11,8 +11,8 @@ Describe "get-ancestor_function" {
   BeforeEach {
     cd $ScriptRoot
 
-    Test-Create-Repository "$($TestBaseDir)\\$($TestDirName)"
-    cd "$($TestBaseDir)\\$($TestDirName)"
+    Test-Create-Repository "$TestBaseDir\\$TestDirName"
+    cd "$TestBaseDir\\$TestDirName"
 
     if(-not $?)
     {
