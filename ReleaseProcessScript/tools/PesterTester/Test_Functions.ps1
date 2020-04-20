@@ -21,8 +21,8 @@ function Test-Create-And-Add-Remote ($TestBaseDir, $TestDirName, $PseudoRemoteTe
   cd $TestBaseDir
 
   New-Item $PseudoRemoteTestDir -ItemType directory
-  cd "$($TestBaseDir)\\$($PseudoRemoteTestDir)"
-  $FileName = "file:///$($TestBaseDir)/$($TestDirName)"
+  cd $TestBaseDir\\$PseudoRemoteTestDir"
+  $FileName = "file:///$TestBaseDir/$TestDirName"
   git clone $FileName "." 2>&1 > $NULL
 
   cd $TestBaseDir"\"$TestDirName
