@@ -36,6 +36,8 @@ Describe "IntegrationTests" {
 
     Initialize-GitRepository $TestDir
     Initialize-GitRepository $ReferenceDir
+    
+    Set-Location $ScriptRoot
   }
 
   AfterEach {
