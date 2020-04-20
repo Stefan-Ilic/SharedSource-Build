@@ -20,7 +20,7 @@ function Test-Create-And-Add-Remote ($TestBaseDir, $TestDirName, $PseudoRemoteTe
 {
   cd $TestBaseDir
 
-  New-Item $PseudoRemoteTestDir -ItemType directory
+  New-Item $TestBaseDir\$PseudoRemoteTestDir -ItemType directory
   cd "$TestBaseDir\$PseudoRemoteTestDir"
   $FileName = "file:///$TestBaseDir/$TestDirName"
   git clone $FileName "." 2>&1 > $NULL
