@@ -4,7 +4,7 @@
 #There was an Issue that $PSScriptRoot was null in BeforeEach/AfterEach, so we have to cache it here
 $ScriptRoot = $PSScriptRoot
 
-$TestBaseDir = "C:\temp"
+$TestBaseDir = (Get-Item -LiteralPath $env:TEMP).FullName
 $TestDirName = "GitUnitTestDir"
 
 Describe "get-ancestor_function" {
