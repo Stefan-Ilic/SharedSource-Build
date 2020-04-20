@@ -20,8 +20,8 @@ Describe "release_process_script_flow" {
     Mock Invoke-MsBuild-And-Commit { return }
     Mock Push-To-Repos { return }
 
-    Test-Create-Repository "$($TestBaseDir)\\$($TestDirName)"
-    cd "$($TestBaseDir)\\$($TestDirName)"
+    Test-Create-Repository "$TestBaseDir\\$TestDirName"
+    cd "$TestBaseDir\\$TestDirName"
     Test-Mock-All-Jira-Functions
   }
 
